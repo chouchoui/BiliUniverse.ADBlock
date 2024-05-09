@@ -131,14 +131,19 @@ $.log(`⚠ FORMAT: ${FORMAT}`, "");
 																await fixPosition().then(result => item = result);//小广告补位
 															}
 														} else if (cardGoto === 'live' && cardType === 'small_cover_v9') {
-															let blockUpLiveList = Settings?.Detail?.blockUpLiveList;
-															if (typeof blockUpLiveList === 'number') {
-																blockUpLiveList = blockUpLiveList.toString();
-															}
-															if (blockUpLiveList && blockUpLiveList.includes(item?.args?.up_id?.toString())) {
-																$.log(`🎉 屏蔽Up主<${item?.args?.up_name}>直播推广`);
-																await fixPosition().then(result => item = result);//小广告补位
-															}
+															$.log(`🎉 屏蔽直播`);
+															await fixPosition().then(result => item = result);//小广告补位
+															// let blockUpLiveList = Settings?.Detail?.blockUpLiveList;
+															// if (typeof blockUpLiveList === 'number') {
+															// 	blockUpLiveList = blockUpLiveList.toString();
+															// }
+															// if (blockUpLiveList && blockUpLiveList.includes(item?.args?.up_id?.toString())) {
+															// 	$.log(`🎉 屏蔽Up主<${item?.args?.up_name}>直播推广`);
+															// 	await fixPosition().then(result => item = result);//小广告补位
+															// }
+														} else if (cardGoto === 'picture') {
+															$.log(`🎉 屏蔽图文`);
+															await fixPosition().then(result => item = result);//小广告补位
 														} else if (cardType === 'cm_v2' && ['ad_player', 'ad_inline_3d', 'ad_inline_eggs', 'ad_inline_live'].includes(cardGoto)) {
 															$.log(`🎉 ${cardGoto}广告去除`);
 															return undefined; //大广告直接去除
